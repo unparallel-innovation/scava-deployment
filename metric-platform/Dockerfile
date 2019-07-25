@@ -55,7 +55,7 @@ RUN rm -rf META-INF
 
 WORKDIR ..
 
-RUN echo "-Dcom.sun.management.jmxremote.rmi.port=8192\n-Dcom.sun.management.jmxremote=true\n-Dcom.sun.management.jmxremote.port=8192\n-Dcom.sun.management.jmxremote.ssl=false\n-Dcom.sun.management.jmxremote.authenticate=false\n-Dcom.sun.management.jmxremote.local.only=false\n-Djava.rmi.server.hostname=localhost" >> ./eclipse.ini
+RUN echo "-Dcom.sun.management.jmxremote.rmi.port=8192\n-Dcom.sun.management.jmxremote=true\n-Dcom.sun.management.jmxremote.port=8192\n-Dcom.sun.management.jmxremote.ssl=false\n-Dcom.sun.management.jmxremote.authenticate=false\n-Dcom.sun.management.jmxremote.local.only=false\n-Djava.rmi.server.hostname=scava-dev.ow2.org" >> ./eclipse.ini
 
 # By default, starts the platform to run the master, a slave, and the web API
 ENTRYPOINT exec ./eclipse -apiServer -master -slave -config prop.properties

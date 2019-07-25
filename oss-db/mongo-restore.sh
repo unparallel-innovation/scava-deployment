@@ -29,7 +29,7 @@ done
 
 # Restore from dump
 shopt -s nullglob
-DUMPS=(*2018.11.16*.gz)
+DUMPS=(*20190715*.gz)
 NB_DUMPS=${#DUMPS[@]}
 
 DCOUNT=0
@@ -40,7 +40,6 @@ done
 
 /entrypoint.sh mongod --logpath /var/log/mongodb.log --logappend --port 8000 --shutdown &&
 echo "Restore session closed" &&
-
 
 echo "Starting listening session on port 27017" &&
 /entrypoint.sh mongod --logpath /var/log/mongodb.log --logappend &&

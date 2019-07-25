@@ -27,8 +27,9 @@ version: "3"
 services:
     admin-webapp:
         build: ./web-admin
+        #user: nginx-docker
         environment:
-            - API_GATEWAY_VAR=http://localhost:8086
+            - API_GATEWAY_VAR=http://scava-dev.ow2.org:8086
         depends_on:
             - api-server
         networks:
@@ -41,6 +42,7 @@ services:
     oss-app: #Deploys a container with the OSSMETER platform configured to act as master
              # and to run the api server used by oss-web service
         build: ./metric-platform
+        #entrypoint: ["./wait-for-it.sh", "oss-db:27017", "-t", "0", "--", "./eclipse", "-master", "-apiServer", "-worker", "w1", "-worker", "w2", "-config", "prop.properties"]
         entrypoint: ["./wait-for-it.sh", "oss-db:27017", "-t", "0", "--", "./eclipse", "-master", "-apiServer", "-worker", "w1", "-config", "prop.properties"]
         depends_on:
             - oss-db
@@ -54,15 +56,27 @@ services:
         ports:
           - "8182:8182"
           - "8192:8192"
-    ### Uncoment the service below to add more workers
-    # oss-slave: # Service containing OSSMETER slaves instances
-    #     build: ./metric-platform
-    #     entrypoint: ["./wait-for-it.sh", "oss-db:27017", "-t", "0", "--", "./eclipse", "-worker", "w2", "-config", "prop.properties"]
-    #     depends_on:
-    #       - oss-db
-    #       - oss-app
-    #     networks:
-    #       - default
+
+            ### Uncoment the service below to add more workers
+    oss-slave: # Service containing OSSMETER slaves instances
+    #build: ./metric-platform
+         image: scava-deployment_oss-app 
+         entrypoint: ["./wait-for-it.sh", "oss-db:27017", "-t", "0", "--", "./eclipse", "-worker", "w2", "-config", "prop.properties"]
+         depends_on:
+           - oss-db
+           - oss-app
+         networks:
+           - default
+
+    oss-slave2: # Service containing OSSMETER slaves instances
+    #build: ./metric-platform
+         image: scava-deployment_oss-app 
+         entrypoint: ["./wait-for-it.sh", "oss-db:27017", "-t", "0", "--", "./eclipse", "-worker", "w3", "-config", "prop.properties"]
+         depends_on:
+           - oss-db
+           - oss-app
+         networks:
+           - default
 
     oss-db: # data storage service
         build: ./oss-db #restores a dump of of the Knowledge Base
@@ -71,11 +85,13 @@ services:
             - default
         expose:  #exposes database port to oss-web and oss-app
             - 27017
-    #    volumes: #creates volume on container
-    #        - ~/oss-data:/data/db
- # Uncomment the port map below to give access to external mongo database visualizers
         ports:
             - "27017:27017"
+              #olumes: #creates volume on container
+#            - /srv/scava/docker-volumes/oss-db:/data/db
+ # Uncomment the port map below to give access to external mongo database visualizers
+ #ports:
+                #            - "127.0.0.1:27017:27017"
 
     kb-service: #deploys the Knowledge Base services
         build: ./KB  # directory to the corresponding Dockerfile
@@ -96,8 +112,8 @@ services:
             - default
         expose:  #exposes database port to oss-web and oss-app
             - 27017
-#        volumes: #creates volume on container
-#            - ~/kb-data:/data/kb-db
+        volumes: #creates volume on container
+            - /srv/scava/docker-volumes/kb-data:/data/kb-db
  # Uncomment the port map below to give access to external mongo database visualizers
         ports:
             - "27018:27017"
@@ -157,7 +173,7 @@ services:
       expose:
           - 5601
       ports:
-       - "80:5601"
+       - "8601:5601"
       environment:
       - ELASTICSEARCH_URL=https://elasticsearch:9200
 
@@ -175,7 +191,7 @@ services:
             - default
         environment:
             - DASHDEBUG=0
-            - BULKSIZE=500
+            - BULKSIZE=300
 
     prosoul:
         build: ./quality-model
@@ -185,10 +201,10 @@ services:
          - kibiter
          - elasticsearch
         environment:
-         - ALLOWED_HOSTS=prosoul localhost 127.0.0.1
+         - ALLOWED_HOSTS=prosoul localhost 127.0.0.1 scava-dev.ow2.org
          - ES_URL=https://admin:admin@elasticsearch:9200
-         - KIBITER_URL=https://kibiter:80
-         - KIBITER_HOST=http://localhost:80
+         - KIBITER_URL=http://scava-dev.ow2.org:8601
+         - KIBITER_HOST=http://scava-dev.ow2.org:8601
          - DASHDEBUG=0
          - SYNC_ES_SCAVA=0
          - QM_URL=https://raw.githubusercontent.com/Bitergia/prosoul/master/django-prosoul/prosoul/data/qmodel_crossminer.json
