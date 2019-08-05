@@ -87,6 +87,8 @@ services:
             - 27017
         ports:
             - "27017:27017"
+        environment:
+            - RESTORE_DB=0
               #olumes: #creates volume on container
 #            - /srv/scava/docker-volumes/oss-db:/data/db
  # Uncomment the port map below to give access to external mongo database visualizers
