@@ -4,6 +4,7 @@ FLAG=0
 while true; do
     ./importer-scava-metrics.sh;
     ./importer-sonar-metrics.sh;
+    ./importer-scancode-metrics.sh;
     ./importer-omm-metrics.sh;
 
     if [[ $FLAG -eq 0 ]]; then
