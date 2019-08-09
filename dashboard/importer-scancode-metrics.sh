@@ -26,7 +26,7 @@ for P in ${PMAP}; do
 	echo ----${POW2}
 	echo ----${PSCAVA}
 	echo ----${PGIT}
-	# latest artifacts can be browsed with https://gitlab.ow2.org/ow2/<PROJECT>/asm/-/jobs/artifacts/master/browse?job=scancode
+	# latest artifacts can be browsed with https://gitlab.ow2.org/ow2/oscar/<PROJECT>/-/jobs/artifacts/master/browse?job=scancode
 
 	URL="https://gitlab.ow2.org/ow2/oscar/${POW2}/-/jobs/artifacts/master/raw/scancode-${PGIT}.json?job=scancode"
 	echo "Now importing data to ES from ${URL} and to SCAVA project ${POW2}"
