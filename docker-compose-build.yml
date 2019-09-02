@@ -194,6 +194,7 @@ services:
         environment:
             - DASHDEBUG=0
             - BULKSIZE=300
+            - NO_LOOP=0
 
     prosoul:
         build: ./quality-model
