@@ -7,6 +7,7 @@ while true; do
     ./importer-sonar-metrics.sh;
     ./importer-scancode-metrics.sh;
     ./importer-omm-metrics.sh;
+    ./importer-mkt-metrics.sh;
 
     if [[ $FLAG -eq 0 ]]; then
         ./importer-dashboards.sh;

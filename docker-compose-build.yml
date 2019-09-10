@@ -95,28 +95,28 @@ services:
  #ports:
                 #            - "127.0.0.1:27017:27017"
 
-    kb-service: #deploys the Knowledge Base services
-        build: ./KB  # directory to the corresponding Dockerfile
+    kb-service: # deploys the Knowledge Base services
+        build: ./KB   #directory to the corresponding Dockerfile
         depends_on:
-            - kb-db #only requests for kb-db service to be launched before this service. DB may still not be ready when this service starts
+            - kb-db # only requests for kb-db service to be launched before this service. DB may still not be ready when this service starts
             - oss-app
         networks:
             - default
-        # maps the port 8080 in the localhost to port 8080 of container  "HOST:CONTAINER"
+              # maps the port 8080 in the localhost to port 8080 of container  "HOST:CONTAINER"
         ports:
             - "8080:8080"
 
 
-    kb-db: # data storage service for the Knowledge Base services
-        build: ./KB-db #restores a dump of of the Knowledge Base
-    #    image: mongo:3.4 #use a clean database
+    kb-db: #  data storage service for the Knowledge Base services
+        build: ./KB-db # restores a dump of of the Knowledge Base
+        image: mongo:3.4 # use a clean database
         networks:
             - default
         expose:  #exposes database port to oss-web and oss-app
             - 27017
-        volumes: #creates volume on container
-            - /srv/scava/docker-volumes/kb-data:/data/kb-db
- # Uncomment the port map below to give access to external mongo database visualizers
+              #volumes: # creates volume on container
+              #- /srv/scava/docker-volumes/kb-data:/data/kb-db
+              #Uncomment the port map below to give access to external mongo database visualizers
         ports:
             - "27018:27017"
 
@@ -194,7 +194,7 @@ services:
         environment:
             - DASHDEBUG=0
             - BULKSIZE=300
-            - NO_LOOP=0
+            - NO_LOOP=1
 
     prosoul:
         build: ./quality-model
@@ -210,5 +210,5 @@ services:
          - KIBITER_HOST=http://scava-dev.ow2.org:8601
          - DASHDEBUG=0
          - SYNC_ES_SCAVA=0
-         - QM_URL=https://raw.githubusercontent.com/Bitergia/prosoul/master/django-prosoul/prosoul/data/qmodel_crossminer.json
+           #- QM_URL=https://raw.githubusercontent.com/Bitergia/prosoul/master/django-prosoul/prosoul/data/qmodel_crossminer.json
          - QM_NAME=crossminer
