@@ -11,21 +11,6 @@
 FROM mongo:3.4
 
 # Get download dump archives
-#ADD http://ci3.castalia.camp/dl/M24/JDBM.2018.11.16.gz /home
-#ADD http://ci3.castalia.camp/dl/M24/JDBM3.2018.11.16.gz /home
-#ADD http://ci3.castalia.camp/dl/M24/Jest.2018.11.16.gz /home
-#ADD http://ci3.castalia.camp/dl/M24/SVNKIT.2018.11.16.gz /home
-#ADD http://ci3.castalia.camp/dl/M24/elasticsearch-java-client.2018.11.16.gz /home
-#ADD http://ci3.castalia.camp/dl/M24/elasticsearchjava.2018.11.16.gz /home
-#ADD http://ci3.castalia.camp/dl/M24/elasticsearchjavaclient.2018.11.16.gz /home
-#ADD http://ci3.castalia.camp/dl/M24/emf.2018.11.16.gz /home
-#ADD http://ci3.castalia.camp/dl/M24/gef.2018.11.16.gz /home
-#ADD http://ci3.castalia.camp/dl/M24/netty.2018.11.16.gz /home
-#ADD http://ci3.castalia.camp/dl/M24/scava-analysis.2018.11.16.gz /home
-#ADD http://ci3.castalia.camp/dl/M24/scava.2018.11.16.gz /home
-#ADD http://ci3.castalia.camp/dl/M24/spring-elasticsearch.2018.11.16.gz /home
-#ADD http://ci3.castalia.camp/dl/M24/springelasticsearch.2018.11.16.gz /home
-
 ADD https://ow2-utils.ow2.org/cmr/asm.20190715.gz /home
 ADD https://ow2-utils.ow2.org/cmr/BonitaStudio.20190715.gz /home
 ADD https://ow2-utils.ow2.org/cmr/cliflegacy.20190715.gz /home
