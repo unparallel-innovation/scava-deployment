@@ -193,7 +193,7 @@ services:
             - default
         environment:
             - DASHDEBUG=0
-            - BULKSIZE=300
+            - BULKSIZE=100
             - NO_LOOP=1
 
     prosoul:
