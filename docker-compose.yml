@@ -26,8 +26,10 @@
 version: "3"
 services:
     admin-webapp:
-        build: ./web-admin
-        #user: nginx-docker
+        build:
+          context: ./web-admin
+          args:
+            - BRANCH=dev
         environment:
             - API_GATEWAY_VAR=http://scava-dev.ow2.org:8086
         depends_on:
@@ -41,8 +43,10 @@ services:
 
     oss-app: #Deploys a container with the OSSMETER platform configured to act as master
              # and to run the api server used by oss-web service
-        build: ./metric-platform
-        #entrypoint: ["./wait-for-it.sh", "oss-db:27017", "-t", "0", "--", "./eclipse", "-master", "-apiServer", "-worker", "w1", "-worker", "w2", "-config", "prop.properties"]
+        build:
+          context: ./metric-platform
+          args:
+            - BRANCH=dev
         entrypoint: ["./wait-for-it.sh", "oss-db:27017", "-t", "0", "--", "./eclipse", "-master", "-apiServer", "-worker", "w1", "-config", "prop.properties"]
         depends_on:
             - oss-db
@@ -95,8 +99,11 @@ services:
  #ports:
                 #            - "127.0.0.1:27017:27017"
 
-    kb-service: # deploys the Knowledge Base services
-        build: ./KB   #directory to the corresponding Dockerfile
+    kb-service: #deploys the Knowledge Base services
+        build: # directory to the corresponding Dockerfile
+          context: ./KB
+          args:
+            - BRANCH=dev
         depends_on:
             - kb-db # only requests for kb-db service to be launched before this service. DB may still not be ready when this service starts
             - oss-app
@@ -122,8 +129,10 @@ services:
 
 
     api-server: # API gateway to route the access of REST APIs
-        build: ./api-gw
-
+        build:
+          context: ./api-gw
+          args:
+            - BRANCH=dev
         depends_on:
             - oss-app
             - auth-server
@@ -138,7 +147,10 @@ services:
 
 
     auth-server: # Server responsible for the authentication of the
-        build: ./auth
+        build:
+          context: ./auth
+          args:
+            - BRANCH=dev
         entrypoint: ["./wait-for-it.sh", "oss-db:27017", "-t", "0", "--", "java", "-jar", "scava-auth-service-1.0.0.jar" ]
       #  entrypoint: ["./wtfc.sh", "oss-app:8182", "--timeout=0", "java", "-jar", "scava-auth-service-1.0.0.jar" ]
         depends_on:
@@ -163,7 +175,7 @@ services:
         ports:
           - "9200:9200"
         environment:
-          - ES_JAVA_OPTS=-Xms2g -Xmx2g
+          - ES_JAVA_OPTS=-Xms4g -Xmx4g
           - ES_TMPDIR=/tmp
 
     kibiter:
@@ -180,7 +192,10 @@ services:
       - ELASTICSEARCH_URL=https://elasticsearch:9200
 
     dashb-importer:
-        build: ./dashboard
+        build:
+          context: ./dashboard
+          args:
+            - BRANCH=dev
         entrypoint: ["./wait-for-it.sh", "oss-app:8182", "-t", "0", "--",
                      "./wait-for-it.sh", "elasticsearch:9200", "-t", "0", "--",
                      "./wait-for-it.sh", "kibiter:5601", "-t", "0", "--",
