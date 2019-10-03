@@ -14,6 +14,7 @@ https://projects.ow2.org/download/proactive/WebHome/ommv3-2018.csv
 https://projects.ow2.org/download/asm/WebHome/ommv3-2018.csv
 https://projects.ow2.org/download/lutece/WebHome/ommv3-2018.csv
 https://projects.ow2.org/download/sat4j/WebHome/ommv3-2018.csv
+https://projects.ow2.org/download/seed/WebHome/ommv3-2018.csv
 '
 
 for CSV in ${OMM_CSV_LIST}; do

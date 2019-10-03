@@ -19,6 +19,7 @@ proactive:scheduling:scheduling
 asm:asm:asm
 lutece:Lutece:lutece-core
 sat4j:sat4j:sat4j
+seedstack:seed:seed
 '
 
 for P in ${PMAP}; do

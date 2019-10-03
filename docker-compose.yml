@@ -167,7 +167,7 @@ services:
 
     elasticsearch:
         image: acsdocker/elasticsearch:6.3.1-secured
-        command: /elasticsearch/bin/elasticsearch -E network.bind_host=0.0.0.0 -Ehttp.max_content_length=500mb
+        command: /elasticsearch/bin/elasticsearch -E network.bind_host=0.0.0.0 -Ehttp.max_content_length=1000mb
         networks:
             - default
         expose:
@@ -209,7 +209,7 @@ services:
         environment:
             - DASHDEBUG=0
             - BULKSIZE=100
-            - NO_LOOP=1
+            - NO_LOOP=0
 
     prosoul:
         build: ./quality-model

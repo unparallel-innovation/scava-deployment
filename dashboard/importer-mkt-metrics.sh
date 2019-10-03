@@ -4,7 +4,16 @@
 cd scava-metrics
 
 MKT_CSV_LIST='
-https://projects.ow2.org/download/asm/WebHome/mkt-2018.csv
+https://projects.ow2.org/download/docdoku/WebHome/mktv1-2018.csv
+https://projects.ow2.org/download/clif/WebHome/mktv1-2018.csv
+https://projects.ow2.org/download/spoon/WebHome/mktv1-2018.csv
+https://projects.ow2.org/download/bonita/WebHome/mktv1-2018.csv
+https://projects.ow2.org/download/xwiki/WebHome/mktv1-2018.csv
+https://projects.ow2.org/download/knowage/WebHome/mktv1-2018.csv
+https://projects.ow2.org/download/proactive/WebHome/mktv1-2018.csv
+https://projects.ow2.org/download/asm/WebHome/mktv1-2018.csv
+https://projects.ow2.org/download/lutece/WebHome/mktv1-2018.csv
+https://projects.ow2.org/download/sat4j/WebHome/mktv1-2018.csv
 '
 
 for CSV in ${MKT_CSV_LIST}; do

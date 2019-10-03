@@ -19,5 +19,5 @@ while true; do
       break;
     fi
 
-    sleep 300;
+    sleep 3600;
 done
