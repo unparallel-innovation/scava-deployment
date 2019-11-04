@@ -5,10 +5,10 @@ cd scava-metrics
 
 MAPPING_LIST='
 https://sonarqube.ow2.org|https://ow2-utils.ow2.org/cmr/sonar2scava-project-mapping-ow2.json
-http://sonar.docdoku.net|https://ow2-utils.ow2.org/cmr/sonar2scava-project-mapping-docdoku.json
 http://dev.lutece.paris.fr/sonar/|https://ow2-utils.ow2.org/cmr/sonar2scava-project-mapping-lutece.json
-https://sonarcloud.io/|https://ow2-utils.ow2.org/cmr/sonar2scava-project-mapping-sonarcloud.json
 '
+#http://sonar.docdoku.net|https://ow2-utils.ow2.org/cmr/sonar2scava-project-mapping-docdoku.json
+#https://sonarcloud.io/|https://ow2-utils.ow2.org/cmr/sonar2scava-project-mapping-sonarcloud.json
 
 for MAPPING in ${MAPPING_LIST}; do
 	IFS='|' read SONAR_URL PMAP <<< "${MAPPING}"

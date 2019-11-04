@@ -11,21 +11,21 @@
 FROM mongo:3.4
 
 # Get download dump archives
-ADD https://ow2-utils.ow2.org/cmr/asm.20190715.gz /home
-ADD https://ow2-utils.ow2.org/cmr/BonitaStudio.20190715.gz /home
-ADD https://ow2-utils.ow2.org/cmr/cliflegacy.20190715.gz /home
-ADD https://ow2-utils.ow2.org/cmr/docdokuplm.20190715.gz /home
-ADD https://ow2-utils.ow2.org/cmr/KnowageServer.20190715.gz /home
-ADD https://ow2-utils.ow2.org/cmr/Lutece.20190715.gz /home
-ADD https://ow2-utils.ow2.org/cmr/RocketChat.20190715.gz /home
-ADD https://ow2-utils.ow2.org/cmr/sat4j.20190715.gz /home
-ADD https://ow2-utils.ow2.org/cmr/scheduling.20190715.gz /home
-ADD https://ow2-utils.ow2.org/cmr/spoon.20190715.gz /home
-ADD https://ow2-utils.ow2.org/cmr/XWiki.20190715.gz /home
-ADD https://ow2-utils.ow2.org/cmr/scava.20190715.gz /home
-ADD https://ow2-utils.ow2.org/cmr/scava-analysis.20190715.gz /home
+ADD https://ow2-utils.ow2.org/cmr/asm.20191029.gz /home
+ADD https://ow2-utils.ow2.org/cmr/BonitaStudio.20191029.gz /home
+ADD https://ow2-utils.ow2.org/cmr/cliflegacy.20191029.gz /home
+ADD https://ow2-utils.ow2.org/cmr/docdokuplm.20191029.gz /home
+ADD https://ow2-utils.ow2.org/cmr/KnowageServer.20191029.gz /home
+ADD https://ow2-utils.ow2.org/cmr/Lutece.20191029.gz /home
+ADD https://ow2-utils.ow2.org/cmr/RocketChat.20191029.gz /home
+ADD https://ow2-utils.ow2.org/cmr/sat4j.20191029.gz /home
+ADD https://ow2-utils.ow2.org/cmr/scheduling.20191029.gz /home
+ADD https://ow2-utils.ow2.org/cmr/spoon.20191029.gz /home
+ADD https://ow2-utils.ow2.org/cmr/XWiki.20191029.gz /home
+ADD https://ow2-utils.ow2.org/cmr/scava.20191029.gz /home
+ADD https://ow2-utils.ow2.org/cmr/scava-analysis.20191029.gz /home
 
-WORKDIR home
+WORKDIR /home
 
 
 # Copy copy script used to load dabase dump

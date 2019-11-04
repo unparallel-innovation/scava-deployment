@@ -89,15 +89,15 @@ services:
             - default
         expose:  #exposes database port to oss-web and oss-app
             - 27017
-        ports:
-            - "27017:27017"
+#        ports:
+#            - "27017:27017"
         environment:
-            - RESTORE_DB=0
+            - RESTORE_DB=1
               #olumes: #creates volume on container
 #            - /srv/scava/docker-volumes/oss-db:/data/db
  # Uncomment the port map below to give access to external mongo database visualizers
- #ports:
-                #            - "127.0.0.1:27017:27017"
+ #        ports:
+ #               - "127.0.0.1:27017:27017"
 
     kb-service: #deploys the Knowledge Base services
         build: # directory to the corresponding Dockerfile
@@ -120,12 +120,12 @@ services:
         networks:
             - default
         expose:  #exposes database port to oss-web and oss-app
-            - 27017
+                - 27017
               #volumes: # creates volume on container
               #- /srv/scava/docker-volumes/kb-data:/data/kb-db
               #Uncomment the port map below to give access to external mongo database visualizers
-        ports:
-            - "27018:27017"
+              #ports:
+              #- "27018:27017"
 
 
     api-server: # API gateway to route the access of REST APIs

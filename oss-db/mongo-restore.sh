@@ -31,7 +31,7 @@ if [ $RESTORE_DB -eq 1 ]; then
 
 	# Restore from dump
 	shopt -s nullglob
-	DUMPS=(*20190715*.gz)
+	DUMPS=(*20191029*.gz)
 	NB_DUMPS=${#DUMPS[@]}
 
 	DCOUNT=0

@@ -14,6 +14,7 @@ https://projects.ow2.org/download/proactive/WebHome/mktv1-2018.csv
 https://projects.ow2.org/download/asm/WebHome/mktv1-2018.csv
 https://projects.ow2.org/download/lutece/WebHome/mktv1-2018.csv
 https://projects.ow2.org/download/sat4j/WebHome/mktv1-2018.csv
+https://projects.ow2.org/download/seedstack/WebHome/mktv1-2018.csv
 '
 
 for CSV in ${MKT_CSV_LIST}; do
