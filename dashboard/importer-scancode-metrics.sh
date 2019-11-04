@@ -12,7 +12,7 @@ PMAP='
 docdoku:docdokuplm:docdoku-plm
 clif:cliflegacy:clif-legacy
 spoon:spoon:spoon
-bonita:BonitaStudio:bonita-studio
+bonita:bonitaengine:bonita-engine
 xwiki:XWiki:xwiki-platform
 knowage:KnowageServer:Knowage-Server
 proactive:scheduling:scheduling
