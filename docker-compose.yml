@@ -116,7 +116,7 @@ services:
 
     kb-db: #  data storage service for the Knowledge Base services
         build: ./KB-db # restores a dump of of the Knowledge Base
-        image: mongo:3.4 # use a clean database
+        #image: mongo:3.4 # use a clean database
         networks:
             - default
         expose:  #exposes database port to oss-web and oss-app
